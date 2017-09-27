@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;gatling-charts-highcharts-bundle-2.2.5/user-files/simulations/RecordedSimulation.scala&apos; to &apos;ntv_live.scala&apos;" description="Rename resource &apos;RecordedSimulation.scala&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="user-files/simulations/RecordedSimulation.scala" name="ntv_live.scala" stamp="1502868972394" updateReferences="true"/>
+</session>

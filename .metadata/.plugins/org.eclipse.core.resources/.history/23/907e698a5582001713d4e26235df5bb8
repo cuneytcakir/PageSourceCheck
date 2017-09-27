@@ -1,0 +1,221 @@
+
+import scala.concurrent.duration._
+
+import io.gatling.core.Predef._
+import io.gatling.http.Predef._
+import io.gatling.jdbc.Predef._
+
+class RecordedSimulation extends Simulation {
+
+	val httpProtocol = http
+		.baseURL("http://www.ntv.com.tr")
+		.inferHtmlResources(BlackList(""".*\.js""", """.*\.css""", """.*\.gif""", """.*\.jpeg""", """.*\.jpg""", """.*\.ico""", """.*\.woff""", """.*\.(t|o)tf""", """.*\.png"""), WhiteList())
+		.acceptHeader("image/png,image/*;q=0.8,*/*;q=0.5")
+		.acceptEncodingHeader("gzip, deflate")
+		.acceptLanguageHeader("en-US,en;q=0.5")
+		.userAgentHeader("Mozilla/5.0 (Macintosh; Intel Mac OS X 10.12; rv:43.0) Gecko/20100101 Firefox/43.0")
+
+	val headers_0 = Map("Accept" -> "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8")
+
+	val headers_2 = Map("Accept" -> "*/*")
+
+	val headers_3 = Map(
+		"Accept" -> "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+		"Access-Control-Request-Headers" -> "content-type",
+		"Access-Control-Request-Method" -> "POST",
+		"Origin" -> "http://www.ntv.com.tr")
+
+	val headers_11 = Map(
+		"Accept" -> "*/*",
+		"X-Requested-With" -> "XMLHttpRequest")
+
+	val headers_20 = Map(
+		"Accept" -> "*/*",
+		"Content-Type" -> "text/plain",
+		"Origin" -> "http://www.ntv.com.tr")
+
+	val headers_21 = Map(
+		"Accept" -> "*/*",
+		"Content-Type" -> "application/json; charset=utf-8",
+		"Origin" -> "http://www.ntv.com.tr")
+
+	val headers_23 = Map(
+		"Accept" -> "*/*",
+		"Content-Type" -> "text/plain; charset=UTF-8",
+		"Origin" -> "http://www.ntv.com.tr")
+
+	val headers_25 = Map(
+		"Accept" -> "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+		"Origin" -> "http://www.ntv.com.tr")
+
+    val uri01 = "http://cdn1.ntv.com.tr/gorsel"
+    val uri02 = "http://tags.bluekai.com/site/39414"
+    val uri03 = "http://gatr.hit.gemius.pl/_1502717365845/rexdot.js"
+    val uri04 = "http://js.agkn.com/prod/v0/tag.js"
+    val uri05 = "http://baltar.dimml.io/flow/7srv/3324962a8939f50f3478ce9e18d6b0e80232b910.js"
+    val uri06 = "http://cm.g.doubleclick.net/pixel"
+    val uri07 = "http://dcc2.segmentify.com/"
+    val uri08 = "http://cdn2.ntv.com.tr"
+    val uri09 = "http://cdn.optimizely.com/js/3203251001.js"
+    val uri11 = "http://d.agkn.com/iframe/8613"
+    val uri12 = "http://b.scorecardresearch.com/b"
+    val uri13 = "http://dygvideo.dygdigital.com/api/video_info"
+    val uri14 = "http://dygassets.dygdigital.com"
+    val uri15 = "http://trackingapi.cloudapp.net/push"
+    val uri16 = "http://locationv2.api.sociaplus.com"
+
+	val scn = scenario("RecordedSimulation")
+		// anasayfa
+		.exec(http("request_0")
+			.get("/")
+			.headers(headers_0)
+			.resources(http("request_1")
+			.get(uri11 + "/?che=174797504&c=%7B%22bpid%22%3A%22dogusturkey%22%2C%22loc%22%3A%22http%3A%2F%2Fwww.ntv.com.tr%2F%22%2C%22ref%22%3A%22-1%22%2C%22cid%22%3A%22-1%22%2C%22sid%22%3A%22-1%22%2C%22gen%22%3A%22-1%22%2C%22age%22%3A%22-1%22%2C%22cat%22%3A%22-1%22%2C%22brd%22%3A%22-1%22%7D")
+			.headers(headers_0),
+            http("request_2")
+			.get(uri16 + "/?partnerName=ntv&callback=parseLocationData&_=1502717364077")
+			.headers(headers_2),
+            http("request_3")
+			.options(uri15 + "")
+			.headers(headers_3),
+            http("request_4")
+			.get(uri01 + "/dunya/avusturya-basbakani-kernin-danismani-israilde-gozaltina-alindi,Bqe1LmRQykKU3xzZvLj23w.jpg?v=20170814150654592&width=150&height=115&mode=crop&scale=both&meta=square&quality=80"),
+            http("request_5")
+			.get(uri01 + "/turkiye/valilik-3-kisiden-az-girmeyi-yasakladi,mKZfeJE70kubijWgi4_VNg.jpg?v=20170801134153648&width=150&height=115&mode=crop&scale=both&meta=square&quality=80"),
+            http("request_6")
+			.get(uri01 + "/turkiye/cami-bahcesinde-silahli-saldiri-2-yarali,XCQDFMdfzUedZCB5SapDOw.jpg?v=20170814155748250&width=150&height=115&mode=crop&scale=both&meta=square&quality=80"),
+            http("request_7")
+			.get(uri01 + "/spor/christoph-daumdan-tepki-ceken-hareket-ceza-odeyecek,soQf1QNnnEeGDmhnyv_mKQ.gif?v=20170814145559415&width=300&height=250&mode=crop&scale=both&meta=square&quality=80"),
+            http("request_8")
+			.get(uri01 + "/dunya/sierra-leonede-toprak-kaymasiyuzlerce-kisi-hayatini-kaybetmis-olabilir,zvZ47dF66EGa2K_9v8om7Q.jpg?v=20170508082853616&width=150&height=115&mode=crop&scale=both&meta=square&quality=80"),
+            http("request_9")
+			.get(uri01 + "/yasam/justin-bieberi-reddeden-kadin-jessica-gober,rs5m3i9V3kuXUvkPZn5BCw.jpg?v=20170814124216340&width=300&height=250&mode=crop&scale=both&meta=square&quality=80"),
+            http("request_10")
+			.get(uri01 + "/yasam/usain-boltun-final-yarisi-oncesi-parti-goruntuleri-ortaya-cikti,4I_j99Or2EiKXRYWPNVk8Q.jpg?v=20170814112855735&width=948&height=314&mode=crop&scale=both&meta=panoramic&quality=80"),
+            http("request_11")
+			.get("/widget/hava/?widget=true")
+			.headers(headers_11),
+            http("request_12")
+			.get("/widget/hava")
+			.headers(headers_11),
+            http("request_13")
+			.get(uri01 + "/turkiye/karakol-bastigi-iddia-edilen-belediye-baskanina-sorusturma,q_Qlr71AEEOVAEUL8v-fqA.jpg?v=20170814161111360&width=150&height=115&mode=crop&scale=both&meta=square&quality=80"),
+            http("request_14")
+			.get(uri01 + "/dunya/yeni-zelanda-agir-suclu-gencleri-askeri-kampa-gonderecek,nVctBhLygE2URLmM2ZzjfQ.jpg?v=20170814125538068&width=150&height=115&mode=crop&scale=both&meta=square&quality=80"),
+            http("request_15")
+			.get(uri01 + "/turkiye/istanbulda-metroda-ciplak-aramaya-dava,5srBnLQekE-bHgFQgp-AQQ.jpg?v=20170814140734116&width=948&height=314&mode=crop&scale=both&meta=panoramic&quality=80"),
+            http("request_16")
+			.get(uri01 + "/turkiye/tayin-isteyen-memur-ates-acip-iki-calisani-rehin-aldi,DbFnSOj9iUCtF3sh3Fat9g.jpg?v=20170814145855967&width=150&height=115&mode=crop&scale=both&meta=square&quality=80"),
+            http("request_17")
+			.get(uri01 + "/dunya/turistin-naziselamina-yumruk,Mug7SkhITkGGxv_FHrna0A.jpg?v=20170814113708017&width=150&height=115&mode=crop&scale=both&meta=square&quality=80"),
+            http("request_18")
+			.get(uri03 + "?l=90&id=bQ.rEoLqLGWG6ICLmOQV9cVl74DBAqbSSaus375JneH.W7&et=view&hsrc=1&initsonar=1&extra=&eventid=0&fr=1&tz=-180&fv=Shockwave%20Flash%2026.0%20r0&href=http%3A%2F%2Fwww.ntv.com.tr%2F&ref=&screen=1920x1080r1000&col=24&window=1920x955&ltime=84&lsdata=564glkTJg78IXFb2D_Ige9bnMPvoHqbSaeNNOL9bHj7.C7GwBFECCImQPCCpIEwu.06cjB7q9WW336TFT90TQFsVhqzi/glFqdtd8VyySo/&fpdata=H8rQ7uHFXkbQlri78_tAQ1.v_afZqKnoJE3NlZTOden.B7&vis=1&lsadd=KlxHBRaGiXMy5ocQUqnyxSmrGGGeqxXGFiQt-lMS")
+			.headers(headers_2),
+            http("request_19")
+			.get(uri01 + "/ekonomi/son-dakika-haberi-hukumet-memura-zam-teklifini-acikladi,relhY2DCak2yO2mp2fmIjg.jpg?v=20170814155933047&width=948&height=314&mode=crop&scale=both&meta=panoramic&quality=80"),
+            http("request_20")
+			.get(uri07 + "/get/key/v1.json?count=1")
+			.headers(headers_20),
+            http("request_21")
+			.post(uri15 + "")
+			.headers(headers_21)
+			.body(RawFileBody("RecordedSimulation_0021_request.txt")),
+            http("request_22")
+			.get(uri02 + "?ret=html&phint=Keywords%3Danasayfa&phint=__bk_t%3DNTV%20HABER%20-%20Haberler%2C%20Son%20Dakika%20Haberleri&phint=__bk_k%3D&phint=__bk_l%3Dhttp%3A%2F%2Fwww.ntv.com.tr%2F&limit=1&bknms=ver=2.0,ua=92ca074d51b3cd396816ef007c3e432a,t=1502717365713,m=b78992ac519c1df1a4785c50aff67ed3,k=1,lang=07ef608d8a7e9677f0b83775f0b83775,sr=1920x1080x24,tzo=-180,hss=true,hls=true,idb=true,addb=undefined,odb=undefined,cpu=4b4e4ecaab1f1c93ab1f1c93ab1f1c93,platform=6d44fad93929d59b3929d59b3929d59b,notrack=,plugins=deb782cd572aa52c0b8ef4ccd412b095&r=4194483")
+			.headers(headers_0),
+            http("request_23")
+			.post(uri07 + "/add/events/v1.json?apiKey=06641bab-8b32-42c2-b8ba-129f4d981ebb")
+			.headers(headers_23)
+			.body(RawFileBody("RecordedSimulation_0023_request.txt")),
+            http("request_24")
+			.get(uri06 + "?google_nid=bluekai&google_cm&google_sc&"),
+            http("request_25")
+			.get(uri13 + "?akamai=true&PublisherId=11&ReferenceId=Ntv_e4a8aca8-b542-44f8-aacb-274413c639b3&SecretKey=NtvApiSecret2014*")
+			.headers(headers_25),
+            http("request_26")
+			.get(uri05 + "?clientId=2&dom=www.ntv.com.tr&url=http%3A%2F%2Fwww.ntv.com.tr%2F&gemius_sent_once=1")
+			.headers(headers_2),
+            http("request_27")
+			.get(uri12 + "?c1=1&c2=9125528&c3=ntv&c5=Video-Galeri&c10=1-1&ns__t=1502717367743&ns_c=UTF-8&cv=3.1&c8=NTV%20HABER%20-%20Haberler%2C%20Son%20Dakika%20Haberleri&c7=http%3A%2F%2Fwww.ntv.com.tr%2F&c9=")))
+		.pause(12)
+		.exec(http("request_28")
+			.get(uri01 + "/sanat/kum-ve-suyla-giyinen-modeller-photoshop-yok,bWay4ErHc0m1dYjRZw1Gfg.jpg?v=20170814110401318&width=229&height=200&mode=crop&scale=both&meta=square&quality=80")
+			.resources(http("request_29")
+			.get(uri01 + "/sanat/beni-nukhet-duru-saniyorlar-kabaresi-antalyada,Y_EvbTPGf0KXIhZQuHcQKQ.jpg?v=20170814094155510&width=229&height=200&mode=crop&scale=both&meta=square&quality=80"),
+            http("request_30")
+			.get(uri01 + "/saglik/obezitedeki-artis-kirmizi-alarm-veriyor,ILZVEjOA8kSfSWWaNAxP4Q.jpg?v=20170809181609343&width=229&height=200&mode=crop&scale=both&meta=square&quality=80"),
+            http("request_31")
+			.get(uri01 + "/yasam/iki-turk-dizisi-kolombiyada-yayina-basliyor,wK7n3aj1ikGn8gcgLKsSdA.jpg?v=20170814100238263&width=229&height=200&mode=crop&scale=both&meta=square&quality=80"),
+            http("request_32")
+			.get(uri01 + "/yasam/unluler-ve-otomobilleri,4lv0gyhP1EqMP2ifApMnAw.jpg?v=20170814150456177&width=229&height=200&mode=crop&scale=both&meta=square&quality=80"),
+            http("request_33")
+			.get(uri01 + "/sanat/it-filminden-yeni-fotograflar,d0vgvpJXlEOHdFIW9-xLSg.jpg?v=20170814120328241&width=229&height=200&mode=crop&scale=both&meta=square&quality=80"),
+            http("request_34")
+			.get(uri01 + "/yasam/instagramda-unluler-14-agustos-2017,7OKQsLpLS0S2bXPrrH2KUw.jpg?v=20170814110535395&width=229&height=200&mode=crop&scale=both&meta=square&quality=80"),
+            http("request_35")
+			.get(uri01 + "/yasam/unluleri-bir-de-makyajsiz-gorun,3uhEG2i5-kKw8wP_OifdwQ.jpg?v=20170814090652657&width=229&height=200&mode=crop&scale=both&meta=square&quality=80"),
+            http("request_36")
+			.get(uri01 + "/sanat/halil-sezaiden-yeni-album-mujdesi,jdkHmNGut0y_MRsdnHI5kw.jpg?v=20170814114156009&width=229&height=200&mode=crop&scale=both&meta=square&quality=80"),
+            http("request_37")
+			.get(uri01 + "//ntv-para-geri-sayim,7qD_VkkgCUyUeZorrObIpA.jpg?v=20161003113023673&width=229&height=200&mode=crop&scale=both&meta=square&quality=80"),
+            http("request_38")
+			.get(uri01 + "/saglik/kadin-tipi-sac-dokulmesi-neden-olur,eno4JH8A5UOTrVjeQaSPPQ.jpg?v=20170810082416134&width=229&height=200&mode=crop&scale=both&meta=square&quality=80"),
+            http("request_39")
+			.get(uri01 + "/saglik/alkol-almasaniz-da-karacigeriniz-yaglanabilir,L4fCdOj3q0yNP1vMUIi_zQ.jpg?v=20170809131217289&width=229&height=200&mode=crop&scale=both&meta=square&quality=80"),
+            http("request_40")
+			.get(uri01 + "//,iP4VQK0g3UiT5hNqvVxbiw.jpg?v=20151128171144696&width=238&height=200&mode=crop&scale=both&meta=square&quality=80"),
+            http("request_41")
+			.get(uri01 + "//haber-merkezi,MLU_NelPpkmFqiRPi3iYXg.jpg?v=20161003112710063&width=229&height=200&mode=crop&scale=both&meta=square&quality=80"),
+            http("request_42")
+			.get(uri01 + "//,n5s4PzJjIES3lycot7O1Xw.gif?v=20170105181649589&width=238&height=200&mode=crop&scale=both&meta=square&quality=80"),
+            http("request_43")
+			.get(uri01 + "//gune-baslarken,VxVirdS3A0egdPKusoyexw.jpg?v=20161003111956516&width=229&height=200&mode=crop&scale=both&meta=square&quality=80"),
+            http("request_44")
+			.get(uri01 + "//,gTClb4OgMke9I78Dvqp72Q.jpg?v=20170713104413434&width=238&height=200&mode=crop&scale=both&meta=square&quality=80"),
+            http("request_45")
+			.get(uri01 + "/sanat/game-of-thrones-hayranlari-icin-westeros-haritali-kaykaylar,JkYEAmnN6kKYA52ei0kVrQ.jpg?v=20170814114040871&width=229&height=200&mode=crop&scale=both&meta=square&quality=80"),
+            http("request_46")
+			.get(uri01 + "/yasam/meryem-uzerli-yeni-yasini-kutladi,g3o1f_4CNkqreq7UdFXKvg.jpg?v=20170814102253089&width=229&height=200&mode=crop&scale=both&meta=square&quality=80"),
+            http("request_47")
+			.get(uri01 + "//ntv-para-finans-kafe,1YtRPrPXfEqQXJ7zs2kXjQ.jpg?v=20161003112934048&width=229&height=200&mode=crop&scale=both&meta=square&quality=80"),
+            http("request_48")
+			.get(uri01 + "/yasam/oyuncu-zeynep-aydemirin-mutlu-gunu,Jq23vyRNHEaAfNjy0VHy6A.jpg?v=20170814094609603&width=229&height=200&mode=crop&scale=both&meta=square&quality=80"),
+            http("request_49")
+			.get(uri01 + "//yakin-plan,v2ou2IQZ702Zi15haHl45Q.jpg?v=20161007111847062&width=229&height=200&mode=crop&scale=both&meta=square&quality=80"),
+            http("request_50")
+			.get(uri01 + "//dunyanin-haberi,fJ4OO1pm_06tF0QVnbpZ8w.jpg?v=20161003110913264&width=229&height=200&mode=crop&scale=both&meta=square&quality=80"),
+            http("request_51")
+			.get(uri01 + "/saglik/ihmal-edilen-korkular-fobiye-donusebilir,G0bp4hTbIk6eoImuOVnzaQ.jpg?v=20170810082820479&width=229&height=200&mode=crop&scale=both&meta=square&quality=80"),
+            http("request_52")
+			.get(uri01 + "/yasam/netflixin-ilk-turk-orijinal-dizisinin-basrol-oyuncusu-cagatay-ulusoy-oldu,IIVS9rm2Kky6ptZPL-BPpw.jpg?v=20170814144320281&width=229&height=200&mode=crop&scale=both&meta=square&quality=80"),
+            http("request_53")
+			.get(uri01 + "/yasam/kim-kardashiandan-ask-pozu,7HGzwKf73Euel2bCjEnYYg.jpg?v=20170814092902145&width=229&height=200&mode=crop&scale=both&meta=square&quality=80"),
+            http("request_54")
+			.get(uri01 + "//,I-ERUXMGkEqEgpyv9m1sDQ.jpg?v=20170703164058973&width=238&height=200&mode=crop&scale=both&meta=square&quality=80"),
+            http("request_55")
+			.get(uri01 + "//ntvye-sorun,eANSKNZ4okWdWkuKYgiwgg.jpg?v=20141219223010252&width=229&height=200&mode=crop&scale=both&meta=square&quality=80"),
+            http("request_56")
+			.get(uri01 + "/egitim/ts-1-ve-ts-2-puan-turleri-ile-tercih-edilebilecek-universite-bolumleri,fsGEYDmQlEyz1OTvvPdzMw.jpg?v=20170712120033680&width=238&height=200&mode=crop&scale=both&meta=square&quality=80"),
+            http("request_57")
+			.get(uri01 + "//gece-gunduz,SaEIahILQUK2J1QpxvHqrQ.jpg?v=20161003111027421&width=229&height=200&mode=crop&scale=both&meta=square&quality=80"),
+            http("request_58")
+			.get(uri01 + "//gece-bulteni,RoSJr4CESkOkfuE8y6T0yg.jpg?v=20161003111840578&width=229&height=200&mode=crop&scale=both&meta=square&quality=80"),
+            http("request_59")
+			.get(uri01 + "//,ulJaugL8q06xHkBftW8UEQ.jpg?v=20170719105002208&width=238&height=200&mode=crop&scale=both&meta=square&quality=80"),
+            http("request_60")
+			.get(uri01 + "//ntv-para-piyasa-ekrani,1zK6ZeM_zEeDw5eWicbRVw.jpg?v=20161003113127970&width=229&height=200&mode=crop&scale=both&meta=square&quality=80"),
+            http("request_61")
+			.get(uri01 + "/sanat/game-of-thrones-7-sezon-6-bolum-yeni-fragmani,7KMcRXAhDUeR8Q-rExyH9A.jpg?v=20170814161009489&width=229&height=200&mode=crop&scale=both&meta=square&quality=80"),
+            http("request_62")
+			.get(uri01 + "/yasam/engin-altan-duzyatanbelgesel-cekecek,RDv0N-BWy0mK1P_rjFPfTA.jpg?v=20170814093241305&width=229&height=200&mode=crop&scale=both&meta=square&quality=80"),
+            http("request_63")
+			.get(uri01 + "/sanat/turk-sinemasinin-kalbi-hollywoodda-atacak,Cuc1GB6a10qFCKcJ10liBQ.jpg?v=20170814161901841&width=229&height=200&mode=crop&scale=both&meta=square&quality=80"),
+            http("request_64")
+			.get(uri01 + "//,s6PcVh3y6km3lwyd1J39HA.jpg?v=20170713104127796&width=238&height=200&mode=crop&scale=both&meta=square&quality=80"),
+            http("request_65")
+			.get(uri01 + "/sanat/piyanonun-genc-yetenegi,tYyXjj96Ek63F5MYKNK-_g.jpg?v=20170814125259845&width=229&height=200&mode=crop&scale=both&meta=square&quality=80"),
+            http("request_66")
+			.get(uri01 + "//,2e0chClhZEO_DDxNAB-kYA.jpg?v=20170523122547994&width=238&height=200&mode=crop&scale=both&meta=square&quality=80")))
+
+	setUp(scn.inject(atOnceUsers(3000))).protocols(httpProtocol)
+}

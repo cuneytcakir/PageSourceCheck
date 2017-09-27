@@ -1,0 +1,47 @@
+
+import scala.concurrent.duration._
+
+import io.gatling.core.Predef._
+import io.gatling.http.Predef._
+import io.gatling.jdbc.Predef._
+
+class AdminPanel extends Simulation {
+
+	val httpProtocol = http
+		.baseURL("http://admin.ntv.com.tr")
+		.inferHtmlResources(BlackList(""".*\.js""", """.*\.css""", """.*\.gif""", """.*\.jpeg""", """.*\.jpg""", """.*\.ico""", """.*\.woff""", """.*\.(t|o)tf""", """.*\.png"""), WhiteList())
+		.acceptHeader("text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8")
+		.acceptEncodingHeader("gzip, deflate")
+		.acceptLanguageHeader("en-US,en;q=0.5")
+		.userAgentHeader("Mozilla/5.0 (Macintosh; Intel Mac OS X 10.12; rv:43.0) Gecko/20100101 Firefox/43.0")
+
+	val headers_2 = Map(
+		"Accept" -> "application/font-woff2;q=1.0,application/font-woff;q=0.9,*/*;q=0.8",
+		"Accept-Encoding" -> "identity")
+
+    val uri1 = "https://dygassets.dygdigital.com/Files/ntv_logo/80x80-NTV-Logo.png"
+    val uri2 = "http://image.ntv.com.tr"
+
+	val scn = scenario("AdminPanel")
+		.exec(http("request_0")
+			.get("/")
+			.check(bodyBytes.is(RawFileBody("AdminPanel_0000_response.txt"))))
+		.pause(11)
+		// login
+		.exec(http("request_1")
+			.post("/Authentication/SignIn")
+			.formParam("ReturnUrl", "/")
+			.formParam("Email", "y@y.com")
+			.formParam("Password", "123456")
+			.resources(http("request_2")
+			.get("/Content/themes/scale/fonts/fontawesome-webfont.woff?v=4.0.3")
+			.headers(headers_2)
+			.check(bodyBytes.is(RawFileBody("AdminPanel_0002_response.txt"))))
+			.check(bodyBytes.is(RawFileBody("AdminPanel_0001_response.txt"))))
+		.pause(24)
+		.exec(http("request_3")
+			.get("/Story/List?FilterViewModel.PageNumber=2&FilterViewModel.IsEditorsChoice=False")
+			.check(bodyBytes.is(RawFileBody("AdminPanel_0003_response.txt"))))
+
+	setUp(scn.inject(atOnceUsers(1))).protocols(httpProtocol)
+}
