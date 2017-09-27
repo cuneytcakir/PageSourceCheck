@@ -32,7 +32,7 @@ public class NewTest {
 					.contains("meta property=\"og:site_name\" content=\"NTV\""));
 				System.out.println("http://staging.ntv.com.tr/"+layout[i]+" = "+driver.getPageSource()
 				.contains("meta name=\"twitter:card\""));
-				
+				//Sasaasas
 				
 			}
 						
