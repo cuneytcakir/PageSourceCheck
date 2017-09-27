@@ -33,6 +33,7 @@ public class NewTest {
 				System.out.println("http://staging.ntv.com.tr/"+layout[i]+" = "+driver.getPageSource()
 				.contains("meta name=\"twitter:card\""));
 				//Sasaasas
+				//sasasas
 				
 			}
 						
